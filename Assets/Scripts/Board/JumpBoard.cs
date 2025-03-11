@@ -2,38 +2,47 @@ using UnityEngine;
 
 public class JumpBoard : MonoBehaviour
 {
-    [SerializeField] private float jumpForce = 10f; 
+    private GameObject player;
     private bool playerOnBoard = false;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             playerOnBoard = true;
+            player = collision.gameObject;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             playerOnBoard = false;
+            player = null;
         }
     }
 
     private void FixedUpdate()
     {
-        if (playerOnBoard)
+        if (playerOnBoard && player != null)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                Rigidbody rigidbody = player.GetComponent<Rigidbody>();
-                if (rigidbody != null)
-                {
-                    rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpForce, rigidbody.velocity.z);
-                }
-            }
+            PlayerJump(player);
         }
+    }
+
+    private void PlayerJump(GameObject player)
+    {
+        Rigidbody rigidbody = player.GetComponent<Rigidbody>();
+        if (rigidbody != null)
+        {
+            Vector3 jumpVelocity = new Vector3(rigidbody.velocity.x, CalculateJumpHeight(), rigidbody.velocity.z);
+            rigidbody.velocity = jumpVelocity;
+        }
+    }
+
+    private float CalculateJumpHeight()
+    {
+        return 10f;
     }
 }
