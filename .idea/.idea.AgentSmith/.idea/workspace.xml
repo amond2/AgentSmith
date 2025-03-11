@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="93593784-04ee-48c8-bf48-e131da11d06b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AgentSmith/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AgentSmith/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefebs/BasicBoard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefebs/BasicBoard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefebs/IceBoard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefebs/IceBoard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefebs/JumpBoard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefebs/JumpBoard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/JumpBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/JumpBoard.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +94,7 @@
       <updated>1741611845751</updated>
       <workItem from="1741611848243" duration="56000" />
       <workItem from="1741611911820" duration="5888000" />
-      <workItem from="1741664375063" duration="5956000" />
+      <workItem from="1741664375063" duration="7484000" />
     </task>
     <servers />
   </component>

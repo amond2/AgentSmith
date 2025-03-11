@@ -1,18 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class JumpBoard : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float jumpForce = 10f; 
+    private bool playerOnBoard = false;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            playerOnBoard = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            playerOnBoard = false;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (playerOnBoard)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                Rigidbody rigidbody = player.GetComponent<Rigidbody>();
+                if (rigidbody != null)
+                {
+                    rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpForce, rigidbody.velocity.z);
+                }
+            }
+        }
     }
 }
