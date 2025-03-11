@@ -43,6 +43,6 @@ public class JumpBoard : MonoBehaviour
 
     private float CalculateJumpHeight()
     {
-        return 10f;
+        return 20f;
     }
 }
