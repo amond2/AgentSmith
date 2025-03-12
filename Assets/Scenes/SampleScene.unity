@@ -621,6 +621,14 @@ PrefabInstance:
       value: IceBoard
       objectReference: {fileID: 0}
     - target: {fileID: 9010939346808924459, guid: 265a058eade2947e98ac7038a072348a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010939346808924459, guid: 265a058eade2947e98ac7038a072348a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010939346808924459, guid: 265a058eade2947e98ac7038a072348a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
       objectReference: {fileID: 0}
