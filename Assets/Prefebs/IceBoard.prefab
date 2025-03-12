@@ -118,3 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24376ff65d554d65b3a1f7f493117b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slideForce: 20
+  slideDuration: 1

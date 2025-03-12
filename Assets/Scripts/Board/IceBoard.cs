@@ -4,61 +4,31 @@ using UnityEngine;
 
 public class IceBoard : MonoBehaviour
 {
-    private GameObject player;
-    private bool playerOnBoard = false;
-    
+    [SerializeField] private float slideForce = 5f;  // 미끄러지는 힘
+    [SerializeField] private float slideDuration = 3f; // 미끄러지는 지속 시간
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            playerOnBoard = true;
-            player = collision.gameObject;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            playerOnBoard = false;
-            player = null;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (playerOnBoard && player != null)
-        {
-            PlayerMove(player);
-        }
-    }
-
-    private void PlayerMove(GameObject player)
-    {
-        Rigidbody rigidbody = player.GetComponent<Rigidbody>();
+        Rigidbody rigidbody = collision.gameObject.GetComponent<Rigidbody>();
         if (rigidbody != null)
-            
         {
-            Vector3 slideDirection = rigidbody.velocity.normalized * CalculateSlideDistance(); // Get direction and apply force
-            rigidbody.AddForce(slideDirection, ForceMode.Impulse);
-
-            StartCoroutine(SlideEffect(rigidbody, slideDirection, 3f)); // Apply effect for 3 seconds
+            StartCoroutine(ApplySlideEffect(rigidbody));
         }
     }
 
-    private IEnumerator SlideEffect(Rigidbody rigidbody, Vector3 direction, float duration)
+    private IEnumerator ApplySlideEffect(Rigidbody rigidbody)
     {
+        Vector3 slideDirection = rigidbody.velocity.normalized * slideForce;
         float elapsedTime = 0f;
-        while (elapsedTime < duration)
+
+        while (elapsedTime < slideDuration)
         {
-            rigidbody.AddForce(direction * Time.deltaTime, ForceMode.Force); // Continuously apply force
+            if (rigidbody != null)
+            {
+                rigidbody.AddForce(slideDirection * Time.deltaTime, ForceMode.Force);
+            }
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-    }
-
-    private float CalculateSlideDistance() // Adjust this value to control slide distance
-    {
-        return 10f;
     }
 }
